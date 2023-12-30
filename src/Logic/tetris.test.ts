@@ -65,7 +65,7 @@ describe('Tetris', () => {
     play_test_dataset.forEach((dataset) =>
       test('should return correct result', () => {
         const { input, expectedOutput } = dataset;
-        const tetris: TetrisInterface = new Tetris(input);
+        const tetris: TetrisInterface = new Tetris(input, false);
         const result = tetris.play();
 
         expect(result).toEqual(expectedOutput);

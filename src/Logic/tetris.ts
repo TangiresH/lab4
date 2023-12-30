@@ -13,19 +13,21 @@ export class Tetris implements TetrisInterface {
     const height = this.input.length;
     const width = this.input[0].length;
     const [shapePos, landscapePos]: Coordinates[][] = this.getShapes(
-        this.input,
-        height,
-        width
+      this.input,
+      height,
+      width
     );
 
     const gameState: GameStateInterface<Coordinates> = new GameState(
-        shapePos,
-        landscapePos,
-        height,
-        width
+      shapePos,
+      landscapePos,
+      height,
+      width
     );
 
-    this.printStep(0, gameState); // Вивід початкового стану гри
+    if (this.showSteps) {
+      this.printStep(0, gameState); // Вивід початкового стану гри тільки при showSteps === true
+    }
 
     let step = 1;
 
@@ -50,9 +52,9 @@ export class Tetris implements TetrisInterface {
   }
 
   private getShapes(
-      field: string[],
-      height: number,
-      width: number
+    field: string[],
+    height: number,
+    width: number
   ): Coordinates[][] {
     const shapePos: Coordinates[] = [];
     const landscapePos: Coordinates[] = [];
