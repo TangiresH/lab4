@@ -2,10 +2,10 @@ import { GameStateInterface, Coordinates } from '../../interfaces';
 
 export class GameState implements GameStateInterface<Coordinates> {
   constructor(
-    private coordShape: Coordinates[],
-    private coordLandscape: Coordinates[],
-    private height: number,
-    private width: number
+      private coordShape: Coordinates[],
+      private coordLandscape: Coordinates[],
+      private height: number,
+      private width: number
   ) {}
 
   public collision: boolean = false;
@@ -26,7 +26,7 @@ export class GameState implements GameStateInterface<Coordinates> {
 
   public getField(): string[] {
     const field: string[] = Array.from({ length: this.height }, () =>
-      '.'.repeat(this.width)
+        '.'.repeat(this.width)
     );
 
     for (const { x, y } of this.coordShape) {
@@ -51,8 +51,8 @@ export class GameState implements GameStateInterface<Coordinates> {
   private checkCollision(coords: Coordinates[]): boolean {
     for (const coord of coords) {
       const overlapping = this.coordLandscape.some(
-        (landscapeCoord) =>
-          landscapeCoord.x === coord.x && landscapeCoord.y === coord.y
+          (landscapeCoord) =>
+              landscapeCoord.x === coord.x && landscapeCoord.y === coord.y
       );
 
       if (overlapping || coord.x >= this.height) {
@@ -61,5 +61,11 @@ export class GameState implements GameStateInterface<Coordinates> {
     }
 
     return false;
+  }
+
+  // Додано новий метод printStep
+  public printStep(): void {
+    console.log(this.getField().join('\n'));
+    console.log('------------------');
   }
 }

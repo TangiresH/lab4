@@ -12,6 +12,7 @@ export interface GameStateInterface<T> {
   nextStep(): void;
   getField(): string[];
   getCoordShape(): Coordinates[];
+  printStep?(): void;
 }
 
 export interface Coordinates {
