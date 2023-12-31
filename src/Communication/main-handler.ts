@@ -6,8 +6,7 @@ export class MainHandler {
       private filepath: string,
       private output_file: string,
       private fs: FileSystemInterface,
-      private showSteps: boolean // Додано параметр showSteps
-  ) {}
+      private showSteps: boolean = false  ) {}
 
   public exec() {
     try {
